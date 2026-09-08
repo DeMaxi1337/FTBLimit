@@ -3,15 +3,18 @@ target/
 build/
 out/
 
-# Dependency directories
+# Dependencies
 lib/
-sources.txt
 
-# IDE and editor files
-.idea/
+# IntelliJ IDEA
+.idea/workspace.xml
+.idea/shelf/
+.idea/tasks.xml
 *.iml
 *.iws
 *.ipr
+
+# Eclipse & VSCode
 .vscode/
 .settings/
 .project
