@@ -1,6 +1,6 @@
 # FTBLimit
 
-A Bukkit/Paper 1.21.1 plugin to restrict the **FTB Ultimine** mod with daily limits, dynamic 24-hour lockouts, group permissions (LuckPerms), moderation bans, and EN/RU language support. (i vibecoded this plugin for my server with friends cuz i couldn't find anything with similar functionality anywhere lmao)
+A Bukkit/Paper 1.21.1 plugin to restrict the **FTB Ultimine** mod with daily limits, dynamic 24-hour lockouts, group permissions (LuckPerms), moderation bans, and EN/RU language support. (i vibecoded this plugin for my server with friends cuz i couldn't find anything with similar plugin anywhere lmao)
 
 ---
 
