@@ -1,0 +1,28 @@
+name: FTBLimit
+version: '1.0.0'
+main: ru.antigravity.ftblimit.FTBLimitPlugin
+api-version: '1.21'
+author: Antigravity
+description: 'FTB Ultimine daily limits, cooldowns, and moderation for Youer 1.21.1'
+softdepend: [LuckPerms]
+
+commands:
+  ftblimit:
+    description: Основная команда управления FTB Ultimine
+    aliases: [ftbl, ultiminelimit]
+    permission: ftblimit.stats
+    usage: /ftblimit help
+
+permissions:
+  ftblimit.admin:
+    description: Доступ ко всем командам управления плагином
+    default: op
+  ftblimit.bypass:
+    description: Полный иммунитет к лимитам и задержкам FTB Ultimine
+    default: op
+  ftblimit.stats:
+    description: Просмотр собственной статистики
+    default: true
+  ftblimit.stats.others:
+    description: Просмотр статистики других игроков
+    default: op

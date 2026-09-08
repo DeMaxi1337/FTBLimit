@@ -1,0 +1,79 @@
+prefix: "&8[&6FTB&eLimit&8] &r"
+
+banned-attempt:
+  - "&c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  - "&4&l✖ &cYou are banned from using &6FTB Ultimine&c!"
+  - "&7Reason: &f{reason}"
+  - "&7Banned by: &e{banned_by}"
+  - "&7Date: &7{ban_date}"
+  - "&c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+limit-reached: "&6&l[!] &eYou have used up your daily limit of &c{limit}&e excavations! FTB Ultimine is now locked for &c{lockout}&e."
+
+cooldown-chat: "&c&l[!] &cDaily excavation limit exhausted! Unlocks in: &e{remaining}&c."
+cooldown-actionbar: "&c⏳ FTB Ultimine locked: &e{remaining}"
+
+actionbar-excavated: "&a⛏ FTB Ultimine: &e{used}&7/&a{limit} &7(left: &f{remaining}&7)"
+actionbar-excavated-delayed: "&e⛏ Excavation complete! &7Next available in &c{delay}s"
+actionbar-excavated-unlimited: "&d⛏ FTB Ultimine &7(Unlimited): &f+{blocks} blocks"
+
+stats:
+  header: "&6━━━━━━ &eFTB Ultimine Statistics: &f{player} &6━━━━━━"
+  group: "&7Group: &f{group} &7(Priority: {priority})"
+  limit-mode: "&7Limit Mode: {mode}"
+  daily: "&7Used today: &e{used} &7/ &a{limit} {bonus}"
+  cooldown: "&7Lockout Status: {cooldown_status}"
+  total: "&7Total Excavations: &b{total_excavations} &7| Blocks Mined: &b{total_blocks}"
+  ban-status: "&7Ban Status: {ban_status}"
+  footer: "&6━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+status:
+  active-delay: "&cLocked (Unlocks in: {remaining})"
+  ready: "&aReady to excavate"
+  unlimited: "&dUnlimited (No Limits / OP)"
+  banned: "&4&lBANNED &7(Reason: {reason})"
+  not-banned: "&aNo active bans"
+  mode-group: "&7Group limit"
+  mode-custom: "&6Permanent custom limit ({amount})"
+  bonus-format: "&a(+{bonus} bonus)"
+
+bonus-added: "&aAdded one-time daily bonus to &e{player}&a: &e+{amount}&a excavations! New limit today: &e{new_limit}&a."
+limit-set: "&aSet permanent custom limit for &e{player}&a: &e{amount}&a excavations per cycle."
+limit-reset: "&aReset permanent limit for &e{player}&a to group default (&e{group}&a)."
+
+delay-cleared: "&aLockout and excavation counter for &e{player}&a successfully reset!"
+delay-cleared-target: "&a&l[!] &aAn administrator has reset your excavation limit! You can dig right now."
+
+group-set: "&aPlayer &e{player}&a assigned to group &e{group}&a."
+player-banned: "&cPlayer &e{player}&c banned from using FTB Ultimine! Reason: &f{reason}"
+player-unbanned: "&aPlayer &e{player}&a unbanned from using FTB Ultimine!"
+player-reset: "&aPlayer &e{player}&a data ({type}) successfully reset!"
+
+banlist-header: "&6━━━━━━ &cFTB Ultimine Banned Players &6━━━━━━"
+banlist-entry: "&c{player} &7- Reason: &f{reason} &7(&e{banned_by}&7, {date})"
+banlist-empty: "&aNo players are currently banned."
+
+reload-success: "&aConfiguration and language files successfully reloaded!"
+
+errors:
+  no-permission: "&cYou do not have permission to execute this command!"
+  player-not-found: "&cPlayer '{player}' was not found or has never joined!"
+  unknown-group: "&cGroup '{group}' does not exist! Available groups: &f{available_groups}"
+  invalid-number: "&cPlease specify a valid positive number!"
+  already-banned: "&cThis player is already banned!"
+  not-banned: "&cThis player is not banned!"
+  only-players: "&cThis command can only be executed by in-game players!"
+
+help:
+  - "&6━━━━━━ &eFTBLimit Commands &6━━━━━━"
+  - "&e/ftbl stats [player] &7— View excavation statistics"
+  - "&e/ftbl setgroup <player> <group> &7— Assign limit group"
+  - "&e/ftbl cleardelay <player> &7— Clear active 24h lockout & reset counter"
+  - "&e/ftbl addbonus <player> <amount> &7— Grant one-time bonus for today"
+  - "&e/ftbl setlimit <player> <number|reset> &7— Set permanent custom limit"
+  - "&e/ftbl ban <player> [reason] &7— Ban player from FTB Ultimine"
+  - "&e/ftbl unban <player> &7— Unban player"
+  - "&e/ftbl banlist &7— List all banned players"
+  - "&e/ftbl reset <player> [daily|stats|all] &7— Reset player counters"
+  - "&e/ftbl reload &7— Reload configs and language files"
+  - "&6━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

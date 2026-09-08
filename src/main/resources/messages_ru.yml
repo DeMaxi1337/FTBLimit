@@ -1,0 +1,79 @@
+prefix: "&8[&6FTB&eLimit&8] &r"
+
+banned-attempt:
+  - "&c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  - "&4&l✖ &cВам заблокировано использование &6FTB Ultimine&c!"
+  - "&7Причина: &f{reason}"
+  - "&7Заблокировал: &e{banned_by}"
+  - "&7Дата: &7{ban_date}"
+  - "&c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+limit-reached: "&6&l[!] &eВы исчерпали лимит в &c{limit}&e вскопок! Использование FTB Ultimine заблокировано на &c{lockout}&e."
+
+cooldown-chat: "&c&l[!] &cЛимит вскопок исчерпан! Разблокировка через: &e{remaining}&c."
+cooldown-actionbar: "&c⏳ FTB Ultimine заблокирован: &e{remaining}"
+
+actionbar-excavated: "&a⛏ FTB Ultimine: &e{used}&7/&a{limit} &7(осталось: &f{remaining}&7)"
+actionbar-excavated-delayed: "&e⛏ Вскопка выполнена! &7Следующая через &c{delay} сек."
+actionbar-excavated-unlimited: "&d⛏ FTB Ultimine &7(Безлимит): &f+{blocks} блоков"
+
+stats:
+  header: "&6━━━━━━ &eСтатистика FTB Ultimine: &f{player} &6━━━━━━"
+  group: "&7Группа: &f{group} &7(Приоритет: {priority})"
+  limit-mode: "&7Тип лимита: {mode}"
+  daily: "&7Использовано за цикл: &e{used} &7/ &a{limit} {bonus}"
+  cooldown: "&7Статус блокировки: {cooldown_status}"
+  total: "&7Всего вскопок: &b{total_excavations} &7| Сломано блоков: &b{total_blocks}"
+  ban-status: "&7Статус бана: {ban_status}"
+  footer: "&6━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+status:
+  active-delay: "&cБлокировка (Разблокировка через: {remaining})"
+  ready: "&aГотов к вскопке"
+  unlimited: "&dБезлимит (Без ограничений / OP)"
+  banned: "&4&lЗАБЛОКИРОВАН &7(Причина: {reason})"
+  not-banned: "&aНет активных блокировок"
+  mode-group: "&7По группе"
+  mode-custom: "&6Постоянный личный ({amount})"
+  bonus-format: "&a(+{bonus} бонус)"
+
+bonus-added: "&aИгроку &e{player}&a добавлен разовый бонус: &e+{amount}&a вскопок! Новый лимит: &e{new_limit}&a."
+limit-set: "&aИгроку &e{player}&a установлен постоянный лимит: &e{amount}&a вскопок за цикл."
+limit-reset: "&aПостоянный лимит игрока &e{player}&a сброшен на стандарт группы (&e{group}&a)."
+
+delay-cleared: "&aБлокировка и счетчик вскопок игрока &e{player}&a успешно сброшены!"
+delay-cleared-target: "&a&l[!] &aАдминистратор сбросил ваш лимит вскопок! Можете копать прямо сейчас."
+
+group-set: "&aИгроку &e{player}&a установлена группа &e{group}&a."
+player-banned: "&cИгрок &e{player}&c заблокирован по использованию FTB Ultimine! Причина: &f{reason}"
+player-unbanned: "&aИгрок &e{player}&a разблокирован по использованию FTB Ultimine!"
+player-reset: "&aДанные игрока &e{player}&a ({type}) успешно сброшены!"
+
+banlist-header: "&6━━━━━━ &cЗаблокированные в FTB Ultimine &6━━━━━━"
+banlist-entry: "&c{player} &7- Причина: &f{reason} &7(&e{banned_by}&7, {date})"
+banlist-empty: "&aЗаблокированных игроков нет."
+
+reload-success: "&aКонфигурация и файлы локализации успешно перезагружены!"
+
+errors:
+  no-permission: "&cУ вас нет прав для выполнения этой команды!"
+  player-not-found: "&cИгрок '{player}' не найден или никогда не заходил!"
+  unknown-group: "&cГруппа '{group}' не найдена! Доступные группы: &f{available_groups}"
+  invalid-number: "&cУкажите корректное положительное число!"
+  already-banned: "&cЭтот игрок уже заблокирован!"
+  not-banned: "&cЭтот игрок не имеет активной блокировки!"
+  only-players: "&cЭта команда доступна только игрокам!"
+
+help:
+  - "&6━━━━━━ &eКоманды FTBLimit &6━━━━━━"
+  - "&e/ftbl stats [игрок] &7— Посмотреть статистику вскопок"
+  - "&e/ftbl setgroup <игрок> <группа> &7— Назначить группу лимита"
+  - "&e/ftbl cleardelay <игрок> &7— Снять 24ч блокировку и сбросить счетчик"
+  - "&e/ftbl addbonus <игрок> <кол-во> &7— Выдать разовый бонус"
+  - "&e/ftbl setlimit <игрок> <число|reset> &7— Задать постоянный лимит"
+  - "&e/ftbl ban <игрок> [причина] &7— Заблокировать использование мода"
+  - "&e/ftbl unban <игрок> &7— Разблокировать использование мода"
+  - "&e/ftbl banlist &7— Список заблокированных игроков"
+  - "&e/ftbl reset <игрок> [daily|stats|all] &7— Сбросить счетчики игрока"
+  - "&e/ftbl reload &7— Перезагрузить конфигурацию"
+  - "&6━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

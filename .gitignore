@@ -1,0 +1,26 @@
+# Build outputs
+target/
+build/
+out/
+
+# Dependency directories
+lib/
+sources.txt
+
+# IDE and editor files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini

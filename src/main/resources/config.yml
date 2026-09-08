@@ -1,0 +1,47 @@
+default-language: "en"
+auto-detect-player-locale: true
+
+op-bypass: true
+bypass-permission: "ftblimit.bypass"
+
+default-group: "default"
+lockout-hours: 24
+
+autosave-interval-minutes: 5
+
+actionbar:
+  enabled: true
+  show-on-excavate: true
+  show-on-cooldown: true
+
+banned-message-cooldown-seconds: 3
+cooldown-message-cooldown-seconds: 2
+
+groups:
+  default:
+    display-name: "&7Default"
+    daily-limit: 500
+    delay-after-limit: 0
+    normal-delay: 0
+    priority: 1
+
+  vip:
+    display-name: "&aVIP"
+    daily-limit: 1500
+    delay-after-limit: 0
+    normal-delay: 0
+    priority: 10
+
+  premium:
+    display-name: "&6Premium"
+    daily-limit: 3000
+    delay-after-limit: 0
+    normal-delay: 0
+    priority: 20
+
+  unlimited:
+    display-name: "&dUnlimited"
+    daily-limit: -1
+    delay-after-limit: 0
+    normal-delay: 0
+    priority: 100
