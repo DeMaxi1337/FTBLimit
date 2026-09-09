@@ -24,6 +24,7 @@ public class ConfigManager {
     private boolean autoDetectPlayerLocale;
     private boolean opBypass;
     private String bypassPermission;
+    private boolean delaysEnabled;
     private String defaultGroupId;
     private int lockoutHours;
     private int autosaveIntervalMinutes;
@@ -48,6 +49,7 @@ public class ConfigManager {
         this.autoDetectPlayerLocale = config.getBoolean("auto-detect-player-locale", true);
         this.opBypass = config.getBoolean("op-bypass", true);
         this.bypassPermission = config.getString("bypass-permission", "ftblimit.bypass");
+        this.delaysEnabled = config.getBoolean("delays-enabled", true);
         this.defaultGroupId = config.getString("default-group", "default");
         this.lockoutHours = Math.max(1, config.getInt("lockout-hours", 24));
         this.autosaveIntervalMinutes = Math.max(1, config.getInt("autosave-interval-minutes", 5));
@@ -86,7 +88,7 @@ public class ConfigManager {
         groups.clear();
         ConfigurationSection section = config.getConfigurationSection("groups");
         if (section == null) {
-            GroupConfig def = new GroupConfig("default", "&7Default", 500, 0, 0, 1);
+            GroupConfig def = new GroupConfig("default", "&7Default", 500, 0, 3, 1);
             groups.put("default", def);
             return;
         }
@@ -106,7 +108,7 @@ public class ConfigManager {
         }
 
         if (!groups.containsKey(defaultGroupId.toLowerCase())) {
-            GroupConfig def = new GroupConfig(defaultGroupId, defaultGroupId, 500, 0, 0, 1);
+            GroupConfig def = new GroupConfig(defaultGroupId, defaultGroupId, 500, 0, 3, 1);
             groups.put(defaultGroupId.toLowerCase(), def);
         }
     }
@@ -178,7 +180,7 @@ public class ConfigManager {
     }
 
     public GroupConfig getDefaultGroup() {
-        return groups.getOrDefault(defaultGroupId.toLowerCase(), new GroupConfig("default", "&7Default", 500, 0, 0, 1));
+        return groups.getOrDefault(defaultGroupId.toLowerCase(), new GroupConfig("default", "&7Default", 500, 0, 3, 1));
     }
 
     public Map<String, GroupConfig> getGroups() {
@@ -191,6 +193,16 @@ public class ConfigManager {
 
     public String getBypassPermission() {
         return bypassPermission;
+    }
+
+    public boolean isDelaysEnabled() {
+        return delaysEnabled;
+    }
+
+    public void setDelaysEnabled(boolean enabled) {
+        this.delaysEnabled = enabled;
+        config.set("delays-enabled", enabled);
+        plugin.saveConfig();
     }
 
     public int getLockoutHours() {

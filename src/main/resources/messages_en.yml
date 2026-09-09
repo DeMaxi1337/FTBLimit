@@ -13,6 +13,9 @@ limit-reached: "&6&l[!] &eYou have used up your daily limit of &c{limit}&e excav
 cooldown-chat: "&c&l[!] &cDaily excavation limit exhausted! Unlocks in: &e{remaining}&c."
 cooldown-actionbar: "&c⏳ FTB Ultimine locked: &e{remaining}"
 
+delay-chat: "&c&l[!] &cDelay between excavations! Please wait &e{remaining}&c before next excavation."
+delay-actionbar: "&c⏳ Delay between excavations: &e{remaining}"
+
 actionbar-excavated: "&a⛏ FTB Ultimine: &e{used}&7/&a{limit} &7(left: &f{remaining}&7)"
 actionbar-excavated-delayed: "&e⛏ Excavation complete! &7Next available in &c{delay}s"
 actionbar-excavated-unlimited: "&d⛏ FTB Ultimine &7(Unlimited): &f+{blocks} blocks"
@@ -23,6 +26,7 @@ stats:
   limit-mode: "&7Limit Mode: {mode}"
   daily: "&7Used today: &e{used} &7/ &a{limit} {bonus}"
   cooldown: "&7Lockout Status: {cooldown_status}"
+  delay-status: "&7Excavation Delay: {delay_status}"
   total: "&7Total Excavations: &b{total_excavations} &7| Blocks Mined: &b{total_blocks}"
   ban-status: "&7Ban Status: {ban_status}"
   footer: "&6━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -36,6 +40,16 @@ status:
   mode-group: "&7Group limit"
   mode-custom: "&6Permanent custom limit ({amount})"
   bonus-format: "&a(+{bonus} bonus)"
+  delay-enabled: "&aEnabled ({seconds}s)"
+  delay-disabled-global: "&cDisabled globally"
+  delay-disabled-player: "&cDisabled (Bypass)"
+
+delay-disabled-global: "&aDelay between excavations has been disabled globally on the server!"
+delay-enabled-global: "&aDelay between excavations has been enabled globally!"
+delay-disabled-player: "&aDelay between excavations disabled for player &e{player}&a!"
+delay-enabled-player: "&aDelay between excavations enabled for player &e{player}&a!"
+delay-disabled-target: "&a&l[!] &aDelay between excavations has been disabled for you!"
+delay-enabled-target: "&e&l[!] &eDelay between excavations has been enabled for you."
 
 bonus-added: "&aAdded one-time daily bonus to &e{player}&a: &e+{amount}&a excavations! New limit today: &e{new_limit}&a."
 limit-set: "&aSet permanent custom limit for &e{player}&a: &e{amount}&a excavations per cycle."
@@ -69,6 +83,8 @@ help:
   - "&e/ftbl stats [player] &7— View excavation statistics"
   - "&e/ftbl setgroup <player> <group> &7— Assign limit group"
   - "&e/ftbl cleardelay <player> &7— Clear active 24h lockout & reset counter"
+  - "&e/ftbl enabledelay [player] &7— Enable delay between excavations"
+  - "&e/ftbl disabledelay [player] &7— Disable delay between excavations"
   - "&e/ftbl addbonus <player> <amount> &7— Grant one-time bonus for today"
   - "&e/ftbl setlimit <player> <number|reset> &7— Set permanent custom limit"
   - "&e/ftbl ban <player> [reason] &7— Ban player from FTB Ultimine"

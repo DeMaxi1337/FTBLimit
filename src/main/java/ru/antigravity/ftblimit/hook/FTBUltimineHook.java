@@ -197,6 +197,24 @@ public class FTBUltimineHook {
             return false;
         }
 
+        long remainingDelay = data.getRemainingDelaySeconds(group, configManager.isDelaysEnabled());
+        if (remainingDelay > 0) {
+            if (bukkitPlayer != null && data.shouldSendCooldownNotification(configManager.getCooldownMessageCooldownSeconds())) {
+                boolean isRu = configManager.isRussian(bukkitPlayer);
+                String formattedDuration = TextUtil.formatDuration(remainingDelay, isRu);
+
+                if (configManager.isActionbarEnabled() && configManager.isShowOnCooldown()) {
+                    String abMsg = configManager.getMessage(bukkitPlayer, "delay-actionbar", false)
+                            .replace("{remaining}", formattedDuration);
+                    TextUtil.sendActionBar(bukkitPlayer, abMsg);
+                }
+                String chatMsg = configManager.getMessage(bukkitPlayer, "delay-chat", true)
+                        .replace("{remaining}", formattedDuration);
+                TextUtil.sendMessage(bukkitPlayer, chatMsg);
+            }
+            return false;
+        }
+
         return true;
     }
 
@@ -208,7 +226,9 @@ public class FTBUltimineHook {
                 if (data.isBanned()) {
                     return resultNoPermission != null ? resultNoPermission : resultOther;
                 }
-                if (data.isLockedOut()) {
+                Player bp = Bukkit.getPlayer(uuid);
+                GroupConfig group = dataManager.resolveGroup(bp, data);
+                if (data.isLockedOut() || data.getRemainingDelaySeconds(group, configManager.isDelaysEnabled()) > 0) {
                     return resultOnCooldown != null ? resultOnCooldown : resultOther;
                 }
             }
@@ -304,6 +324,10 @@ public class FTBUltimineHook {
                 String remainingStr = TextUtil.formatDuration(data.getRemainingLockoutSeconds(), isRu);
                 String msg = configManager.getMessage(bukkitPlayer, "cooldown-actionbar", false)
                         .replace("{remaining}", remainingStr);
+                TextUtil.sendActionBar(bukkitPlayer, msg);
+            } else if (configManager.isDelaysEnabled() && !data.isDelayBypass() && group.getNormalDelay() > 0) {
+                String msg = configManager.getMessage(bukkitPlayer, "actionbar-excavated-delayed", false)
+                        .replace("{delay}", String.valueOf(group.getNormalDelay()));
                 TextUtil.sendActionBar(bukkitPlayer, msg);
             } else {
                 String msg = configManager.getMessage(bukkitPlayer, "actionbar-excavated", false)

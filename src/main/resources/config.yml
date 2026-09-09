@@ -4,6 +4,8 @@ auto-detect-player-locale: true
 op-bypass: true
 bypass-permission: "ftblimit.bypass"
 
+delays-enabled: true
+
 default-group: "default"
 lockout-hours: 24
 
@@ -22,14 +24,14 @@ groups:
     display-name: "&7Default"
     daily-limit: 500
     delay-after-limit: 0
-    normal-delay: 0
+    normal-delay: 3
     priority: 1
 
   vip:
     display-name: "&aVIP"
     daily-limit: 1500
     delay-after-limit: 0
-    normal-delay: 0
+    normal-delay: 1
     priority: 10
 
   premium:

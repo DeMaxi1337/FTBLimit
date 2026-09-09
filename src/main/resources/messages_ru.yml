@@ -13,6 +13,9 @@ limit-reached: "&6&l[!] &eВы исчерпали лимит в &c{limit}&e вс
 cooldown-chat: "&c&l[!] &cЛимит вскопок исчерпан! Разблокировка через: &e{remaining}&c."
 cooldown-actionbar: "&c⏳ FTB Ultimine заблокирован: &e{remaining}"
 
+delay-chat: "&c&l[!] &cЗадержка между вскопками! Подождите еще &e{remaining}&c."
+delay-actionbar: "&c⏳ Задержка между вскопками: &e{remaining}"
+
 actionbar-excavated: "&a⛏ FTB Ultimine: &e{used}&7/&a{limit} &7(осталось: &f{remaining}&7)"
 actionbar-excavated-delayed: "&e⛏ Вскопка выполнена! &7Следующая через &c{delay} сек."
 actionbar-excavated-unlimited: "&d⛏ FTB Ultimine &7(Безлимит): &f+{blocks} блоков"
@@ -23,6 +26,7 @@ stats:
   limit-mode: "&7Тип лимита: {mode}"
   daily: "&7Использовано за цикл: &e{used} &7/ &a{limit} {bonus}"
   cooldown: "&7Статус блокировки: {cooldown_status}"
+  delay-status: "&7Делей между вскопками: {delay_status}"
   total: "&7Всего вскопок: &b{total_excavations} &7| Сломано блоков: &b{total_blocks}"
   ban-status: "&7Статус бана: {ban_status}"
   footer: "&6━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -36,6 +40,16 @@ status:
   mode-group: "&7По группе"
   mode-custom: "&6Постоянный личный ({amount})"
   bonus-format: "&a(+{bonus} бонус)"
+  delay-enabled: "&aВключен ({seconds} сек.)"
+  delay-disabled-global: "&cОтключен глобально"
+  delay-disabled-player: "&cОтключен (Лично)"
+
+delay-disabled-global: "&aЗадержка между вскопками успешно отключена глобально на всем сервере!"
+delay-enabled-global: "&aЗадержка между вскопками успешно включена глобально!"
+delay-disabled-player: "&aЗадержка между вскопками отключена для игрока &e{player}&a!"
+delay-enabled-player: "&aЗадержка между вскопками включена для игрока &e{player}&a!"
+delay-disabled-target: "&a&l[!] &aАдминистратор отключил вам задержку между вскопками!"
+delay-enabled-target: "&e&l[!] &eАдминистратор включил вам задержку между вскопками."
 
 bonus-added: "&aИгроку &e{player}&a добавлен разовый бонус: &e+{amount}&a вскопок! Новый лимит: &e{new_limit}&a."
 limit-set: "&aИгроку &e{player}&a установлен постоянный лимит: &e{amount}&a вскопок за цикл."
@@ -69,6 +83,8 @@ help:
   - "&e/ftbl stats [игрок] &7— Посмотреть статистику вскопок"
   - "&e/ftbl setgroup <игрок> <группа> &7— Назначить группу лимита"
   - "&e/ftbl cleardelay <игрок> &7— Снять 24ч блокировку и сбросить счетчик"
+  - "&e/ftbl enabledelay [игрок] &7— Включить делей между вскопками"
+  - "&e/ftbl disabledelay [игрок] &7— Отключить делей между вскопками"
   - "&e/ftbl addbonus <игрок> <кол-во> &7— Выдать разовый бонус"
   - "&e/ftbl setlimit <игрок> <число|reset> &7— Задать постоянный лимит"
   - "&e/ftbl ban <игрок> [причина] &7— Заблокировать использование мода"

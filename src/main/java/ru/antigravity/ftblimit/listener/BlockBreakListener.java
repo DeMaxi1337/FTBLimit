@@ -86,6 +86,19 @@ public class BlockBreakListener implements Listener {
                         return;
                     }
 
+                    long remainingDelay = data.getRemainingDelaySeconds(group, configManager.isDelaysEnabled());
+                    if (remainingDelay > 0) {
+                        event.setCancelled(true);
+                        if (data.shouldSendCooldownNotification(configManager.getCooldownMessageCooldownSeconds())) {
+                            boolean isRu = configManager.isRussian(player);
+                            String remainingStr = TextUtil.formatDuration(remainingDelay, isRu);
+                            String chatMsg = configManager.getMessage(player, "delay-chat", true)
+                                    .replace("{remaining}", remainingStr);
+                            TextUtil.sendMessage(player, chatMsg);
+                        }
+                        return;
+                    }
+
                     int limit = data.getEffectiveDailyLimit(group);
                     data.recordExcavation(1);
                     if (limit > 0 && data.getDailyExcavations() >= limit) {

@@ -61,6 +61,7 @@ public class DataManager {
                 }
                 data.setLastExcavationTime(pSec.getLong("last-excavation-time", 0L));
                 data.setLockoutUntil(pSec.getLong("lockout-until", 0L));
+                data.setDelayBypass(pSec.getBoolean("delay-bypass", false));
                 data.setTotalExcavations(pSec.getLong("total-excavations", 0L));
                 data.setTotalBlocks(pSec.getLong("total-blocks", 0L));
 
@@ -98,6 +99,7 @@ public class DataManager {
                 }
                 pSec.set("last-excavation-time", data.getLastExcavationTime());
                 pSec.set("lockout-until", data.getLockoutUntil());
+                pSec.set("delay-bypass", data.isDelayBypass());
                 pSec.set("total-excavations", data.getTotalExcavations());
                 pSec.set("total-blocks", data.getTotalBlocks());
                 pSec.set("banned", data.isBanned());

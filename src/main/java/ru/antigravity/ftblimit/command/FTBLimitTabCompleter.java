@@ -17,7 +17,7 @@ public class FTBLimitTabCompleter implements TabCompleter {
     private final DataManager dataManager;
 
     private static final List<String> ADMIN_SUBCOMMANDS = Arrays.asList(
-            "stats", "setgroup", "cleardelay", "addbonus", "setlimit", "ban", "unban", "banlist", "reset", "reload", "help"
+            "stats", "setgroup", "cleardelay", "enabledelay", "disabledelay", "addbonus", "setlimit", "ban", "unban", "banlist", "reset", "reload", "help"
     );
 
     private static final List<String> RESET_TYPES = Arrays.asList("daily", "stats", "all");
@@ -62,7 +62,8 @@ public class FTBLimitTabCompleter implements TabCompleter {
             }
 
             if (sub.equals("stats") || sub.equals("info") || sub.equals("setgroup") || sub.equals("cleardelay")
-                    || sub.equals("resetdelay") || sub.equals("addbonus") || sub.equals("addlimit")
+                    || sub.equals("resetdelay") || sub.equals("enabledelay") || sub.equals("disabledelay")
+                    || sub.equals("addbonus") || sub.equals("addlimit")
                     || sub.equals("setlimit") || sub.equals("ban") || sub.equals("reset")) {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     if (p.getName().toLowerCase().startsWith(prefix)) {

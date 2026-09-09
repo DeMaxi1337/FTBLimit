@@ -51,6 +51,12 @@ public class FTBLimitCommand implements CommandExecutor {
             case "resetdelay":
                 return handleClearDelay(sender, args);
 
+            case "enabledelay":
+                return handleEnableDelay(sender, args);
+
+            case "disabledelay":
+                return handleDisableDelay(sender, args);
+
             case "addbonus":
             case "addlimit":
                 return handleAddBonus(sender, args);
@@ -141,6 +147,15 @@ public class FTBLimitCommand implements CommandExecutor {
                 configManager.getMessage(sender, "status.mode-custom", false).replace("{amount}", String.valueOf(data.getPermanentLimitOverride())) :
                 configManager.getMessage(sender, "status.mode-group", false);
 
+        String delayStatus;
+        if (!configManager.isDelaysEnabled()) {
+            delayStatus = configManager.getMessage(sender, "status.delay-disabled-global", false);
+        } else if (data.isDelayBypass()) {
+            delayStatus = configManager.getMessage(sender, "status.delay-disabled-player", false);
+        } else {
+            delayStatus = configManager.getMessage(sender, "status.delay-enabled", false).replace("{seconds}", String.valueOf(group.getNormalDelay()));
+        }
+
         TextUtil.sendMessage(sender, configManager.getMessage(sender, "stats.header", false).replace("{player}", data.getName()));
         TextUtil.sendMessage(sender, configManager.getMessage(sender, "stats.group", false)
                 .replace("{group}", group.getDisplayName())
@@ -151,6 +166,7 @@ public class FTBLimitCommand implements CommandExecutor {
                 .replace("{limit}", limitStr)
                 .replace("{bonus}", bonusStr));
         TextUtil.sendMessage(sender, configManager.getMessage(sender, "stats.cooldown", false).replace("{cooldown_status}", cooldownStatus));
+        TextUtil.sendMessage(sender, configManager.getMessage(sender, "stats.delay-status", false).replace("{delay_status}", delayStatus));
         TextUtil.sendMessage(sender, configManager.getMessage(sender, "stats.total", false)
                 .replace("{total_excavations}", String.valueOf(data.getTotalExcavations()))
                 .replace("{total_blocks}", String.valueOf(data.getTotalBlocks())));
@@ -476,6 +492,70 @@ public class FTBLimitCommand implements CommandExecutor {
 
         configManager.load();
         TextUtil.sendMessage(sender, configManager.getMessage(sender, "reload-success"));
+        return true;
+    }
+
+    private boolean handleEnableDelay(CommandSender sender, String[] args) {
+        if (!sender.hasPermission("ftblimit.admin")) {
+            TextUtil.sendMessage(sender, configManager.getMessage(sender, "errors.no-permission"));
+            return true;
+        }
+
+        if (args.length == 1) {
+            configManager.setDelaysEnabled(true);
+            TextUtil.sendMessage(sender, configManager.getMessage(sender, "delay-enabled-global"));
+            return true;
+        }
+
+        String targetName = args[1];
+        PlayerData data = dataManager.findPlayerDataByName(targetName);
+        if (data == null) {
+            TextUtil.sendMessage(sender, configManager.getMessage(sender, "errors.player-not-found").replace("{player}", targetName));
+            return true;
+        }
+
+        data.setDelayBypass(false);
+        dataManager.save(true);
+
+        TextUtil.sendMessage(sender, configManager.getMessage(sender, "delay-enabled-player").replace("{player}", data.getName()));
+
+        Player onlineTarget = Bukkit.getPlayerExact(data.getName());
+        if (onlineTarget != null && !onlineTarget.equals(sender)) {
+            TextUtil.sendMessage(onlineTarget, configManager.getMessage(onlineTarget, "delay-enabled-target"));
+        }
+
+        return true;
+    }
+
+    private boolean handleDisableDelay(CommandSender sender, String[] args) {
+        if (!sender.hasPermission("ftblimit.admin")) {
+            TextUtil.sendMessage(sender, configManager.getMessage(sender, "errors.no-permission"));
+            return true;
+        }
+
+        if (args.length == 1) {
+            configManager.setDelaysEnabled(false);
+            TextUtil.sendMessage(sender, configManager.getMessage(sender, "delay-disabled-global"));
+            return true;
+        }
+
+        String targetName = args[1];
+        PlayerData data = dataManager.findPlayerDataByName(targetName);
+        if (data == null) {
+            TextUtil.sendMessage(sender, configManager.getMessage(sender, "errors.player-not-found").replace("{player}", targetName));
+            return true;
+        }
+
+        data.setDelayBypass(true);
+        dataManager.save(true);
+
+        TextUtil.sendMessage(sender, configManager.getMessage(sender, "delay-disabled-player").replace("{player}", data.getName()));
+
+        Player onlineTarget = Bukkit.getPlayerExact(data.getName());
+        if (onlineTarget != null && !onlineTarget.equals(sender)) {
+            TextUtil.sendMessage(onlineTarget, configManager.getMessage(onlineTarget, "delay-disabled-target"));
+        }
+
         return true;
     }
 }

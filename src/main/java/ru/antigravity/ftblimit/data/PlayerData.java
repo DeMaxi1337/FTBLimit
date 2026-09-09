@@ -14,6 +14,7 @@ public class PlayerData {
     private Integer permanentLimitOverride;
     private long lastExcavationTime;
     private long lockoutUntil;
+    private boolean delayBypass;
     private long totalExcavations;
     private long totalBlocks;
 
@@ -104,6 +105,14 @@ public class PlayerData {
         this.lockoutUntil = Math.max(0L, lockoutUntil);
     }
 
+    public boolean isDelayBypass() {
+        return delayBypass;
+    }
+
+    public void setDelayBypass(boolean delayBypass) {
+        this.delayBypass = delayBypass;
+    }
+
     public boolean isLockedOut() {
         checkLockoutExpiration();
         return lockoutUntil > System.currentTimeMillis();
@@ -113,6 +122,22 @@ public class PlayerData {
         checkLockoutExpiration();
         long diff = lockoutUntil - System.currentTimeMillis();
         return diff > 0 ? (diff + 999) / 1000 : 0L;
+    }
+
+    public long getRemainingDelaySeconds(GroupConfig group, boolean delaysGloballyEnabled) {
+        if (!delaysGloballyEnabled || delayBypass || group == null) {
+            return 0L;
+        }
+        int delay = group.getNormalDelay();
+        if (delay <= 0) {
+            return 0L;
+        }
+        long elapsedMs = System.currentTimeMillis() - lastExcavationTime;
+        long delayMs = delay * 1000L;
+        if (elapsedMs < delayMs) {
+            return (delayMs - elapsedMs + 999) / 1000L;
+        }
+        return 0L;
     }
 
     public void checkLockoutExpiration() {
