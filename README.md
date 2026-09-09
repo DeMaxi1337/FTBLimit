@@ -23,6 +23,8 @@ A Bukkit/Paper 1.21.1 plugin to restrict the **FTB Ultimine** mod with daily lim
 | `/ftbl stats [player]` | View excavation statistics | `ftblimit.stats` |
 | `/ftbl setgroup <player> <group>` | Assign a limit group | `ftblimit.admin` |
 | `/ftbl cleardelay <player>` | Clear 24h lockout & reset counter | `ftblimit.admin` |
+| `/ftbl enabledelay [player]` | Enable delay between excavations (global/player) | `ftblimit.admin` |
+| `/ftbl disabledelay [player]` | Disable delay between excavations (global/player) | `ftblimit.admin` |
 | `/ftbl addbonus <player> <amount>` | Add one-time bonus for current cycle | `ftblimit.admin` |
 | `/ftbl setlimit <player> <num\|reset>` | Set permanent custom limit | `ftblimit.admin` |
 | `/ftbl ban <player> [reason]` | Ban player from FTB Ultimine | `ftblimit.admin` |
