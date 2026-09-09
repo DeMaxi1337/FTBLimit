@@ -4,7 +4,7 @@ A Bukkit/Paper 1.21.1 plugin to restrict the **FTB Ultimine** mod with daily lim
 
 ---
 
-## ✨ Features
+## Features
 
 - **Daily quotas**: Restrict excavations per cycle (e.g. 500 uses/day).
 - **Dynamic lockout**: When a player reaches their limit, FTB Ultimine is locked as default for 24 hours (configurable in `config.yml`).
@@ -16,7 +16,7 @@ A Bukkit/Paper 1.21.1 plugin to restrict the **FTB Ultimine** mod with daily lim
 
 ---
 
-## 📋 Commands
+## Commands
 
 | Command | Description | Permission |
 |---|---|---|
@@ -34,7 +34,7 @@ A Bukkit/Paper 1.21.1 plugin to restrict the **FTB Ultimine** mod with daily lim
 
 ---
 
-## ⚙️ Configuration (`config.yml`)
+## Configuration (`config.yml`)
 
 ```yaml
 default-language: "en"
